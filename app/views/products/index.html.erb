@@ -1,2 +1,13 @@
 <h1>Wellcome to ecommers</h1>
 
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <%= product.name %>
+      <%= product.price %>
+    </li>
+  <% end %>
+</ul>
+
+<li><%= link_to "Add product", new_product_path %></li>
+
