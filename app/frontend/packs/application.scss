@@ -2,5 +2,13 @@ h1 {
   text-decoration: underline;  
 }  
 
+.new_product{
+  background-color: blue;
+  width: 147px;
+  height: 44px;
+  border-radius: 11px;
+  float: right;
+}
+
 // Import Bootstrap v5  
 @import "~bootstrap/scss/bootstrap";
