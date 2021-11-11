@@ -1,14 +1,17 @@
-<h1>Wellcome to ecommers</h1>
+<h1>Wellcome to Ecommers</h1>
 
 <button class="button-63 new_product" role="button">
   <%= link_to "New Product", new_product_path, class: :btn %>
 </button>
+<h2>Product</h2>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Poduct name</th>
+      <th scope="col">Name</th>
+      <th scope="col">Details</th>
+      <th scope="col">Category</th>
       <th scope="col">Price</th>
     </tr>
   </thead>
@@ -17,6 +20,8 @@
       <tr>
         <th scope="row"><%= product.id%></th>
         <td><%= product.name %></td>
+        <td><%= link_to product.details, product %></td>
+        <td><%= product.category_id %></td>
         <td><%= product.price %></td>
       </tr>  
     <% end %>  
