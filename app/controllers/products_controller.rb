@@ -6,6 +6,10 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+   
+  def buy_now
+    
+  end
 
   def new
     @product = Product.new
