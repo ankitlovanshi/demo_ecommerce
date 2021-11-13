@@ -1,16 +1,16 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    if current_user.seller?
+      @products = current_user.products
+    else
+      @products = Product.all
+    end
   end
 
   def show
     @product = Product.find(params[:id])
   end
-   
-  def buy_now
-    
-  end
-
+ 
   def new
     @product = Product.new
   end
@@ -25,8 +25,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def buy_now
+    @user = current_user
+  end
+
   private
     def product_params
-      params.require(:product).permit(:name, :details, :price, :category_id)
+      params.require(:product).permit(:name, :details, :price, :quantity, :category_id)
     end
 end

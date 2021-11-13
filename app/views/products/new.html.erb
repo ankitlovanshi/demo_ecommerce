@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= form.label :quantity %><br>
+    <%= form.text_area :quantity %><br>
+  </div>
+
+  <div>
     <%= form.label :details %><br>
     <%= form.text_area :details %><br>
     <% @product.errors.full_messages_for(:details).each do |message| %>
