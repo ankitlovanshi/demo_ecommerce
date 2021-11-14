@@ -18,7 +18,9 @@
 
   <div>
     <%= form.label :quantity %><br>
-    <%= form.text_area :quantity %><br>
+    <%= form.text_area :quantity %>
+    <% @product.errors.full_messages_for(:quantity).each do |message| %>
+    <% end %><br>
   </div>
 
   <div>
