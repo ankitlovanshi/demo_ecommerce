@@ -12,7 +12,8 @@ h1 {
 }
 
 .home_button{
-  width: 113px;
+  width: 100px;
+  height: 39px;
   font-size: 26px;
   border-radius: 9px;
   background-color: DodgerBlue;
@@ -20,6 +21,16 @@ h1 {
 }
 
 .show_page{
+  margin-left: 12px;
+}
+
+.buy_now{
+  background-color: orange;
+  width: 106px;
+  border-radius: 9px;
+}
+
+.new_page{
   margin-left: 12px;
 }
 // Import Bootstrap v5  

@@ -1,13 +1,18 @@
 <div  class="home_button">
-  <button class="btn">
   <%= button_to root_path, method: :get, class: 'btn' do %>
     <i class="fa fa-home"></i> Home</button>
   <% end %>
+</div>
 </div>
 <div class="show_page">
   <h2><%= @product.name %></h2>
   <p>
     <%= @product.details %>
   </p>
-  <%= link_to "Buy Now", products_buy_now_path, method: :post %>
+
+<div  class="buy_now">
+  <%= button_to products_buy_now_path, method: :post, class: 'btn' do %>
+    <i class="fa fa-shopping-cart"></i>Buy Now</button>
+  <% end %>
+</div>
 </div>
