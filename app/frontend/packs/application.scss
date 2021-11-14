@@ -1,5 +1,6 @@
 h1 {  
   text-decoration: underline;  
+  text-align: center;
 }  
 
 .new_product{
@@ -10,5 +11,16 @@ h1 {
   float: right;
 }
 
+.home_button{
+  width: 113px;
+  font-size: 26px;
+  border-radius: 9px;
+  background-color: DodgerBlue;
+  margin-left: 12px;
+}
+
+.show_page{
+  margin-left: 12px;
+}
 // Import Bootstrap v5  
 @import "~bootstrap/scss/bootstrap";
