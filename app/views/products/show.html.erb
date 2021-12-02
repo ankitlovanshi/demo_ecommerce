@@ -12,10 +12,15 @@
 
 <% if current_user.seller %>
 <% else %>
-  <div  class="buy_now">
-  <%= button_to products_buy_now_path, method: :post, class: 'btn' do %>
-    <i class="fa fa-shopping-cart"></i>Buy Now</button>
+
+  <% if Product.find(params[:id]).quantity == 0 %>
+   <p> Out of stock</p>
+  <% else %>
+    <div  class="buy_now">
+    <%= button_to products_buy_now_path, method: :post, class: 'btn' do %>
+      <i class="fa fa-shopping-cart"></i>Buy Now</button>
+    <% end %>
+    </div>
   <% end %>
-</div>
- <% end %>
+<% end %>
 </div>
