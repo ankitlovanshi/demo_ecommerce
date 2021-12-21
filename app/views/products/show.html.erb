@@ -16,6 +16,19 @@
   <% if Product.find(params[:id]).quantity == 0 %>
    <p> Out of stock</p>
   <% else %>
+    <p>
+      <%= Product.count %>
+      <%= form_with model: @product do |form| %>
+      <div>
+        <%= form.label :category %><br>
+        <%= form.select :quantity, ['1', '2', '3'], :prompt => 'Select Category' %>
+      </div><br>
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>
+
+    </p>
     <div  class="buy_now">
     <%= button_to products_buy_now_path, method: :post, class: 'btn' do %>
       <i class="fa fa-shopping-cart"></i>Buy Now</button>
@@ -23,4 +36,4 @@
     </div>
   <% end %>
 <% end %>
-</div>
+
