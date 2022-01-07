@@ -26,7 +26,11 @@ class ProductsController < ApplicationController
   end
 
   def buy_now
-    @user = current_user
+    @product = Product.find(params[:id])
+    quantity = @product.quantity
+    updated_quantity = (quantity - params[:quantity].to_i)
+
+    @product.update(quantity: updated_quantity)
   end
 
   private

@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root "products#index"
 
   resources :products
-  post "/products/buy_now", to: "products#buy_now"
+  post "/products/:id/buy_now", to: "products#buy_now"
 end
