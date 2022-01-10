@@ -3,15 +3,11 @@
     <i class="fa fa-home"></i> Home</button>
   <% end %>
 </div>
-</div>
+
 <div class="show_page">
   <h2><%= @product.name %></h2>
-  <p>
-    <%= @product.details %>
-  </p>
-  <p>
-    <%= image_tag @product.image.url, style: 'height:30vw;width:70vw;margin-bottom:20px;' %>
-  </p>
+  <p><%= @product.details %></p>
+  <p><%= image_tag @product.image.url, style: 'height:18vw;width:38vw;margin-bottom:20px;' %></p>
 
 <% if current_user.seller %>
 <% else %>
@@ -19,9 +15,7 @@
    <p> Out of stock</p>
   <% else %>
     <p>
-      <p>Product Quantity</p>
-      <%= @product.quantity %>
-    <%= form_with url: "/products/#{@product.id}/buy_now" do |form| %>
+      <%= form_with url: "/products/#{@product.id}/buy_now" do |form| %>
       <div class="quantity_class">
         <%= form.label :Quantity %><br>
         <%= form.select(:quantity, (1..@product.quantity).to_a, {}, {class: "form-control"})  %>
@@ -30,11 +24,16 @@
       <div  class="buy_now">
         <%= button_tag( class: "btn") do %>
           Buy Now<i class="fa fa-shopping-cart"></i>
-       <% end %>
+        <% end %>
       </div>
-    <% end %>
     </p>
   <% end %>
+
+  <div  class="add_to_card">
+    <%= button_to add_to_card_product_path, method: :post, class: 'btn' do %>Add to card</button>
+    <% end %>
+   </div>  
+<% end %>
 <% end %>
 
 

@@ -33,6 +33,10 @@ class ProductsController < ApplicationController
     @product.update(quantity: updated_quantity)
   end
 
+  def add_to_card
+    @product = Product.find(params[:id])
+  end
+
   private
     def product_params
       params.require(:product).permit(:name, :details, :price, :quantity, :category_id, :image)
