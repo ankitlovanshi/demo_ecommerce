@@ -31,6 +31,11 @@
   </div>
 
   <div>
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
     <%= form.label :category %><br>
     <%= form.select :category_id, Category.pluck(:name, :id), :prompt => 'Select Category' %>
   </div><br>

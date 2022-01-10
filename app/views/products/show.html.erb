@@ -9,6 +9,9 @@
   <p>
     <%= @product.details %>
   </p>
+  <p>
+    <%= image_tag @product.image.url, style: 'height:30vw;width:70vw;margin-bottom:20px;' %>
+  </p>
 
 <% if current_user.seller %>
 <% else %>
