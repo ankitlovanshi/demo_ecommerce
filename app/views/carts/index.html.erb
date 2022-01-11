@@ -1,0 +1,16 @@
+<h1>Cart items</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.name %></td>
+        <td><%= cart_item.price %></td>
+      </tr>  
+    <% end %>  
+</tbody>      

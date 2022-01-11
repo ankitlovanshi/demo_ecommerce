@@ -1,9 +1,13 @@
 <h1>Product</h1>
+
+<button class="button-63 new_product" role="button">
+  <%= link_to "My Cart",  carts_path, class: :btn %>
+</button>
+
 <% if current_user.seller? %>
   <button class="button-63 new_product" role="button">
   <%= link_to "New Product", new_product_path, class: :btn %>
   </button>
-<% else%>
 <% end %>
 
 <table class="table table-striped">
