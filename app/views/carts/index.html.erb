@@ -4,6 +4,7 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +12,10 @@
       <tr>
         <td><%= cart_item.name %></td>
         <td><%= cart_item.price %></td>
+        <td><%= button_to cart_path(cart_item.id), method: :delete, class: 'btn'    do %>Remove To Cart</button>
+            <% end %>
+        </td>
       </tr>  
     <% end %>  
-</tbody>      
+</tbody>     
+
