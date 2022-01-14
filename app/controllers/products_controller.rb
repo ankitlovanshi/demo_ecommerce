@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
     cart_item = CartItem.create(name: product.name, price: product.price, cart_id: current_user.cart.id)
     redirect_to carts_path
   end
-  
+
   private
     def product_params
       params.require(:product).permit(:name, :details, :price, :quantity, :category_id, :image)

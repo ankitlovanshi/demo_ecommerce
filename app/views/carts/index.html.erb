@@ -1,4 +1,19 @@
 <h1>Cart items</h1>
+
+<% if @cart_items.count == 0 %>
+  <h3>No item in the cart</h3>
+<% else%>
+  <% if @cart_items.count >=2 %>
+    <div>
+      <h4><%= @cart_items.count %> items are in the Cart</h4>
+    </div>
+  <% else %>
+    <div>
+      <h4><%= @cart_items.count %> item is in the Cart</h4>
+    </div>
+    <% end %>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -18,4 +33,5 @@
         </td>
       </tr>  
     <% end %>  
-</tbody>
+  </tbody>
+</table>

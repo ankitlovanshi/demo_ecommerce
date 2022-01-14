@@ -6,10 +6,9 @@ Rails.application.routes.draw do
     member do
       post :buy_now
       post :add_to_cart
-      post :my_order
     end
   end
 
-  resources :carts
+  resources :carts 
 end
 
