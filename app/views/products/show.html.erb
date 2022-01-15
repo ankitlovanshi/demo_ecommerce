@@ -18,7 +18,7 @@
       <%= form_with url: "/products/#{@product.id}/buy_now" do |form| %>
       <div class="quantity_class">
         <%= form.label :Quantity %><br>
-        <%= form.select(:quantity, (1..@product.quantity).to_a, {}, {class: "form-control"})  %>
+        <%= form.select(:quantity, (1..@product.quantity).to_a, {}, {class: "form-control"}) %>
       </div><br>
       
       <div  class="buy_now">
