@@ -1,18 +1,9 @@
 <h1>Cart items</h1>
 
-<% if @cart_items.count == 0 %>
-  <h3>No item in the cart</h3>
-<% else%>
-  <% if @cart_items.count >=2 %>
-    <div>
-      <h4><%= @cart_items.count %> items are in the Cart</h4>
-    </div>
-  <% else %>
-    <div>
-      <h4><%= @cart_items.count %> item is in the Cart</h4>
-    </div>
-    <% end %>
-<% end %>
+<div class="home_button">
+  <%= link_to root_path, method: :get, class: 'btn btn-outline-primary' do %><i class="fa fa-home"></i> Home
+  <% end %>
+</div>
 
 <table class="table table-striped">
   <thead>
@@ -35,6 +26,21 @@
     <% end %>  
   </tbody>
 </table><br>
+
+<% if @cart_items.count == 0 %>
+  <h3>No item in the cart</h3>
+<% else%>
+  <% if @cart_items.count >=2 %>
+    <div>
+      <h4><%= @cart_items.count %> items are in the Cart</h4>
+    </div>
+  <% else %>
+    <div>
+      <h4><%= @cart_items.count %> item is in the Cart</h4>
+    </div>
+    <% end %>
+<% end %>
+
 <div>
   <h3>Total Price <%= @total_price%></h3>
 </div>

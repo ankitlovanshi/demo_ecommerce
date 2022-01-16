@@ -3,10 +3,6 @@ class CartsController < ApplicationController
     @cart_items = current_user.cart.cart_items
     price = @cart_items.pluck(:price)
     @total_price = price.sum
-    
-  end
-
-  def update
   end
 
   def destroy
