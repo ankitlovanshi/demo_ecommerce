@@ -13,13 +13,15 @@
   <% else %>
     <p>
       <%= form_with url: "/products/#{@product.id}/buy_now" do |form| %>
-      <div class="quantity_class">
-        <%= form.label :Quantity %><br>
-        <%= form.select(:quantity, (1..@product.quantity).to_a, {}, {class: "form-control"}) %>
-      </div><br>
-      
-      <%= link_to buy_now_product_path, method: :post, class: 'btn btn-inverse btn-success' do %><i class="fa fa-shopping-cart"></i>  Buy Now
-      <% end %>
+        <div class="quantity_class">
+          <%= form.label :Quantity %><br>
+          <%= form.select(:quantity, (1..@product.quantity).to_a, {}, {class: "form-control"}) %>
+        </div><br>
+        <div  class="buy_now">
+          <%= button_tag( class: "btn btn-inverse btn-success") do %>
+            Buy Now<i class="fa fa-shopping-cart"></i>
+          <% end %>
+        </div>
     </p>
   <% end %>
 
