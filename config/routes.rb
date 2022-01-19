@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   end
 
   resources :carts do
+     member do
+      post :cart_item_quantity
+    end
   end
 end
 

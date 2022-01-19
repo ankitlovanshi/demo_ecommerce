@@ -39,6 +39,17 @@ h1 {
   font-size: 15px;  
 }
 
+.cart_quantity{
+  display: flex;
+  width: max-content;
+  height: 36px;
+}
+
+.select_cart_quantity{
+   display: flex;
+   float: right;
+}
+
 .quantity_class{
   width: 39px;
 }
