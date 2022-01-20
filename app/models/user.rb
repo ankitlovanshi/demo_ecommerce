@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_one :cart
+  has_many :order
 
   validates :first_name, presence: true
   validates :Last_name, presence: true
