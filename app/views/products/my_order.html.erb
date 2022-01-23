@@ -1,0 +1,22 @@
+<div class="my_order_page">
+
+  <h2 style="text-align: center;">My Order</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Quantiy</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ordered_items.each do |item| %>
+        <tr>
+          <td><%= item.name%></td>
+          <td><%= item.price %></td>
+          <td><%= item.quantity %></td>
+        </tr>  
+      <% end %>  
+    </tbody>  
+</div>    

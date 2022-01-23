@@ -30,7 +30,14 @@ class ProductsController < ApplicationController
     quantity = @product.quantity
     updated_quantity = (quantity - params[:quantity].to_i)
 
+    product = @product
+    ordered_item = OrderItem.create(name: product.name, price: product.price, quantity: params[:quantity].to_i, order_id: current_user.orders.ids.first)
+
     @product.update(quantity: updated_quantity)
+  end
+
+  def my_order
+    @ordered_items = OrderItem.all
   end
 
   def add_to_cart

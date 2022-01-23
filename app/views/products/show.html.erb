@@ -2,6 +2,9 @@
   <%= link_to root_path, method: :get, class: 'btn btn-outline-primary' do %><i class="fa fa-home"></i> Home
   <% end %>
 
+  <%= link_to  my_order_product_path, method: :get, class: 'btn btn-outline-primary' do %>  My Order
+  <% end %>
+
   <h2><%= @product.name %></h2>
   <p><%= @product.details %></p>
   <p><%= image_tag @product.image.url, style: 'height:18vw;width:38vw;margin-bottom:20px;' %></p>

@@ -13,5 +13,6 @@ class User < ApplicationRecord
 
   def create_user_cart
     @cart = Cart.create(user_id: id)
+    @order = Order.create(user_id: id)
   end
 end
