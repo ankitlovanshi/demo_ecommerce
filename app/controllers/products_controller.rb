@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:show, :find_product, :buy_now, :add_to_cart]
+  
   def index
     if current_user.seller?
       @products = current_user.products
@@ -8,13 +10,10 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def find_product
-    @product = Product.find(params[:id])
   end
- 
 
   def new
     @product = Product.new
@@ -31,12 +30,10 @@ class ProductsController < ApplicationController
   end
 
   def buy_now
-    @product = Product.find(params[:id])
     quantity = @product.quantity
     updated_quantity = (quantity - params[:quantity].to_i)
 
-    product = @product
-    ordered_item = OrderItem.create(name: product.name, price: product.price, quantity: params[:quantity].to_i, order_id: current_user.orders.ids.first)
+    ordered_item = OrderItem.create(name: @product.name, price: @product.price, quantity: params[:quantity].to_i, order_id: current_user.orders.ids.first)
 
     @product.update(quantity: updated_quantity)
   end
@@ -44,22 +41,26 @@ class ProductsController < ApplicationController
   def search
     @products = Product.search(params[:query])
     @categories = Category.joins(:products).where(:products => {:id => @products.map{|x| x.id }}).distinct
- end
+  end
 
   def my_order
     @ordered_items = OrderItem.all
   end
 
   def add_to_cart
-    product = Product.find(params[:id])
-    cart_item = CartItem.create(name: product.name, price: product.price,
+    cart_item = CartItem.create(name: @product.name, price: @product.price,
     quantity: 1, cart_id: current_user.cart.id)
     
     redirect_to carts_path
   end
 
   private
-    def product_params
-      params.require(:product).permit(:name, :details, :price, :quantity, :category_id, :image)
-    end
+
+  def product_params
+    params.require(:product).permit(:name, :details, :price, :quantity, :category_id, :image)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end
