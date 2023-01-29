@@ -1,0 +1,27 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Details</th>
+      <th scope="col">Price</th>
+      <% if current_user.seller? %>
+        <th scope="col">Quantity</th>
+      <% else %>
+      <% end %>
+      <th scope="col">Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product %></td>
+        <td><%= product.details %></td>
+        <td><%= product.price %></td>
+        <% if current_user.seller? %>
+          <th><%= product.quantity %></th>
+        <% else %>
+        <% end %>
+        <td><%= product.category&.name %></td>
+      </tr>  
+    <% end %>  
+</tbody> 

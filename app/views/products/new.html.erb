@@ -17,10 +17,22 @@
   </div>
 
   <div>
+    <%= form.label :quantity %><br>
+    <%= form.text_area :quantity %>
+    <% @product.errors.full_messages_for(:quantity).each do |message| %>
+    <% end %><br>
+  </div>
+
+  <div>
     <%= form.label :details %><br>
     <%= form.text_area :details %><br>
     <% @product.errors.full_messages_for(:details).each do |message| %>
     <% end %>
+  </div>
+
+  <div>
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
   </div>
 
   <div>

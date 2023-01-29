@@ -1,0 +1,63 @@
+<h1>Cart items</h1>
+
+<div class="home_button">
+  <%= link_to root_path, method: :get, class: 'btn btn-outline-primary' do %><i class="fa fa-home"></i> Home
+  <% end %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th></th>
+      <th>Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Remove to Cart</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.name %></td>
+        <td>
+          <div class="select_cart_quantity">
+            <% if cart_item.quantity == 1%>
+              <%= button_to cart_item_quantity_cart_path(cart_item.id), method: :post,class: 'btn btn-info btn-lg, remove_botton' do %>+
+                </button>
+              <% end %>
+            <% else %>
+              <%= button_to cart_item_quantity_cart_path(cart_item.id), method: :post,class: 'btn btn-info btn-lg, remove_botton' do %>-
+                </button>
+              <% end %>
+              <% end %>
+          </div>
+        </td>
+        <td><%= cart_item.quantity %></td>
+        <td><%= cart_item.price %></td>
+        <td>
+             <%= button_to cart_path(cart_item.id), method: :delete, class: 'btn btn-info btn-lg, remove_botton' do %>Remove To Cart
+               </button>
+             <% end %>
+        </td>
+      </tr>  
+    <% end %>  
+  </tbody>
+</table><br>
+
+<% if @cart_items.count == 0 %>
+  <h3>No item in the cart</h3>
+<% else%>
+  <% if @cart_items.count >=2 %>
+    <div>
+      <h4><%= @cart_items.count %> items are in the Cart</h4>
+    </div>
+  <% else %>
+    <div>
+      <h4><%= @cart_items.count %> item is in the Cart</h4>
+    </div>
+    <% end %>
+<% end %>
+
+<div>
+  <h3>Total Price <%= @total_price%></h3>
+</div>

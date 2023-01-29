@@ -1,28 +1,48 @@
-<h1>Wellcome to Ecommers</h1>
+<h1>Product</h1>
+
+<%= form_tag class: 'navbar-form navbar-right' do %>
+    <%= search_field_tag class: 'form-control', :id => 'searchbar',  :placeholder =>'Search',   :name => "query" %><br></br>
+    <div  class="buy_now">
+      <%= button_tag do %>
+        submit
+      <% end %>
+    </div>
+<% end %>
 
 <button class="button-63 new_product" role="button">
-  <%= link_to "New Product", new_product_path, class: :btn %>
+  <%= link_to "My Cart",  carts_path, class: :btn %>
 </button>
-<h2>Product</h2>
+
+<% if current_user.seller? %>
+  <button class="button-63 new_product" role="button">
+  <%= link_to "New Product", new_product_path, class: :btn %>
+  </button>
+<% end %>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Details</th>
       <th scope="col">Price</th>
+      <% if current_user.seller? %>
+        <th scope="col">Quantity</th>
+      <% else %>
+      <% end %>
       <th scope="col">Category</th>
     </tr>
   </thead>
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <th scope="row"><%= product.id%></th>
         <td><%= link_to product.name, product %></td>
         <td><%= product.details %></td>
         <td><%= product.price %></td>
+        <% if current_user.seller? %>
+          <th><%= product.quantity %></th>
+        <% else %>
+        <% end %>
         <td><%= product.category&.name %></td>
       </tr>  
     <% end %>  
-  </tbody>      
+</tbody>     
