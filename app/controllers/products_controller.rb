@@ -10,7 +10,12 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+
+  def find_product
+    @product = Product.find(params[:id])
+  end
  
+
   def new
     @product = Product.new
   end
@@ -35,6 +40,11 @@ class ProductsController < ApplicationController
 
     @product.update(quantity: updated_quantity)
   end
+
+  def search
+    @products = Product.search(params[:query])
+    @categories = Category.joins(:products).where(:products => {:id => @products.map{|x| x.id }}).distinct
+ end
 
   def my_order
     @ordered_items = OrderItem.all

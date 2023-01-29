@@ -1,32 +1,34 @@
 <div class="show_page">
-  <%= link_to root_path, method: :get, class: 'btn btn-outline-primary' do %><i class="fa fa-home"></i> Home
+  <%= link_to root_path, method: :get, class: 'btn btn-outline-primary' do %><i class="fa   fa-home"></i> Home
   <% end %>
 
   <%= link_to  my_order_product_path, method: :get, class: 'btn btn-outline-primary' do %>  My Order
-  <% end %>
+  <% end %><br><br>
+
 
   <h2><%= @product.name %></h2>
   <p><%= @product.details %></p>
-  <p><%= image_tag @product.image.url, style: 'height:18vw;width:38vw;margin-bottom:20px;' %></p>
+  <p><%= image_tag @product.image.url, style: 'height:18vw;width:38vw;margin-bottom:20px;' %>
+  </p>
 
-<% if current_user.seller %>
-<% else %>
-  <% if @product.quantity == 0 %>
-   <p> Out of stock</p>
+  <% if current_user.seller %>
   <% else %>
-    <p>
-      <%= form_with url: "/products/#{@product.id}/buy_now" do |form| %>
-        <div class="quantity_class">
-          <%= form.label :Quantity %><br>
-          <%= form.select(:quantity, (1..@product.quantity).to_a, {}, {class: "form-control"}) %>
-        </div><br>
-        <div  class="buy_now">
-          <%= button_tag( class: "btn btn-inverse btn-success") do %>
-            Buy Now<i class="fa fa-shopping-cart"></i>
-          <% end %>
-        </div>
-    </p>
-  <% end %>
+    <% if @product.quantity == 0 %>
+      <p> Out of stock</p>
+    <% else %>
+      <p>
+        <%= form_with url: "/products/#{@product.id}/buy_now" do |form| %>
+          <div class="quantity_class">
+            <%= form.label :Quantity %><br>
+            <%= form.select(:quantity, (1..@product.quantity).to_a, {}, {class: "form-control"}) %>
+          </div><br>
+          <div  class="buy_now">
+            <%= button_tag( class: "btn btn-inverse btn-success") do %>
+              Buy Now<i class="fa fa-shopping-cart"></i>
+            <% end %>
+          </div>
+      </p>
+    <% end %>
 
   <div  class="add_to_cart">
     <% if current_user.cart.cart_items.pluck(:name).include?(@product.name) %>
@@ -41,4 +43,3 @@
   </div> 
 <% end %>
 <% end %>
-

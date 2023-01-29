@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post :buy_now
       post :add_to_cart
       get :my_order
+      post :search
     end
   end
 

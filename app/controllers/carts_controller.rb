@@ -33,4 +33,9 @@ class CartsController < ApplicationController
     redirect_to carts_path
   end
 
+  def search
+    @products = Product.search(params[:query])
+    @categories = Category.joins(:products).where(:products => {:id => @products.map{|x| x.id }}).distinct
+  end
+
 end
